@@ -5,40 +5,17 @@ import warnings
 from secret_schema_validation import generator
 
 SCHEMA = {
-    '$schema':
-    'http://json-schema.org/schema#',
-    'type':
-    'object',
+    '$schema': 'http://json-schema.org/schema#',
+    'type': 'object',
     'properties': {
         'username': {
             'type': 'string'
         },
         'password': {
             'type': 'string'
-        },
-        'engine': {
-            'type': 'string'
-        },
-        'host': {
-            'type': 'string'
-        },
-        'port': {
-            'type': 'string'
-        },
-        'dbname': {
-            'type': 'string'
-        },
-        'queueName': {
-            'type': 'string'
-        },
-        'topicName': {
-            'type': 'string'
         }
     },
-    'required': [
-        'dbname', 'engine', 'host', 'password', 'port', 'queueName',
-        'topicName', 'username'
-    ]
+    'required': ['password', 'username']
 }
 
 FILE_PATH = f"{os.getcwd()}/tesxxt_schema.json"
@@ -52,7 +29,7 @@ class TestGenerateSchema(unittest.TestCase):
                                 message="unclosed.*<ssl.SSLSocket.*>")
 
     def test_generate_schema(self):
-        self.assertEqual(generator.generate_schema("sc3-dev-db"), SCHEMA)
+        self.assertEqual(generator.generate_schema("sc3-xxx-db"), SCHEMA)
 
 
 class TestWriteSchema(unittest.TestCase):
